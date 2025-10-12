@@ -426,7 +426,7 @@ String __hxcpp_get_dll_extension()
     HX_CSTRING(".sim.dylib");
 #elif defined(__APPLE__)
     HX_CSTRING(".dylib");
-#elif defined(ANDROID) || defined(GPH) || defined(WEBOS) || defined(BLACKBERRY) || defined(EMSCRIPTEN) || defined(TIZEN)
+#elif defined(ANDROID) || defined(GPH) || defined(WEBOS)  || defined(BLACKBERRY) || defined(EMSCRIPTEN) || defined(TIZEN)
     HX_CSTRING(".so");
 #else
     HX_CSTRING(".dso");

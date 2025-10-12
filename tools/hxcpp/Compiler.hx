@@ -8,6 +8,7 @@ import cpp.vm.Mutex;
 #else
 import neko.vm.Mutex;
 #end
+
 using StringTools;
 
 private class FlagInfo
@@ -398,6 +399,7 @@ class Compiler
             var tagInfo = inFile.mTags == null ? "" : "\x1b[3m" + inFile.mTags.split(",") + "\x1b[0m";
             var fileName = inFile.mName;
             var split = fileName.split("/");
+
             if (split.length > 1)
             {
                fileName = split.slice(0, split.length - 1).join("/") + "/";
@@ -412,14 +414,15 @@ class Compiler
 
             if (inProgress != null)
             {
-               inProgress.current++;
+                inProgress.current++;
 
-               output = [inProgress.getFormattedProgress(), '-', fileName, tagInfo].join(" ");
+                output = [inProgress.getFormattedProgress(), '-', fileName, tagInfo].join(" ");
             }
             else
                output = ['-', fileName, tagInfo].join(" ");
 
             Log.info(output);
+
             printMutex.release();
          }
 
