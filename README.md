@@ -1,30 +1,19 @@
-# hxcpp
+# Homura's hxcpp Fork
 
-[![Build Status](https://dev.azure.com/HaxeFoundation/GitHubPublic/_apis/build/status/HaxeFoundation.hxcpp?branchName=master)](https://dev.azure.com/HaxeFoundation/GitHubPublic/_build/latest?definitionId=3&branchName=master)
-
-hxcpp is the runtime support for the c++ backend of the [haxe](http://haxe.org/) compiler. This contains the headers, libraries and support code required to generate a fully compiled executable from haxe code.
+This hxcpp fork was previously used for the Android and iOS ports I provided. Although it is no longer used for those ports, it is still maintained and continues to exist within the FNF Mobile community and for the [Shadow Engine](https://github.com/FNF-SE/FNF-Shadow-Engine).
 
 
-# building the tools
+# Building the Tools
 
+For lime:
 ```
-REPO=$(pwd)
-cd ${REPO}/tools/run
+haxelib run lime rebuild hxcpp
+```
+
+Otherwise:
+```
+cd "$(haxelib libpath hxcpp)/tools/run"
 haxe compile.hxml
-cd ${REPO}/tools/hxcpp
+cd "$(haxelib libpath hxcpp)/tools/hxcpp"
 haxe compile.hxml
-cd $REPO
 ```
-
-# cppia
-
-You first need to build the cppia host.
-
-```
-REPO=$(pwd)
-cd ${REPO}/project
-haxe compile-cppia.hxml
-cd $REPO
-```
-
-Then you can do `haxelib run hxcpp file.cppia`.
