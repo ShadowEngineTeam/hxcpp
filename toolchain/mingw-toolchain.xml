@@ -59,8 +59,7 @@
   <ext value=".o"/>
 
   <rcexe name="${HXCPP_WINDRES}" />
-  <rcext value=".o" />
-  <rcflag value="-O coff"/>
+  <rcext value=".res" />
 </compiler>
 
 <linker id="dll" exe="g++">
