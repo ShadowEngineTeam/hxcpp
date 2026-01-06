@@ -3,9 +3,13 @@
 <!-- MINGW TOOLS -->
 
 <section if="linux_host||mac_host">
-  <section if="HXCPP_M64">
+  <section if="HXCPP_M64" unless="HXCPP_ARM64">
     <set name="HXCPP_MINGW_EXE" value="x86_64-w64-mingw32-g++" unless="HXCPP_MINGW_EXE" />
     <set name="MINGW_ROOT" value="/usr/x86_64-w64-mingw32" unless="MINGW_ROOT" />
+  </section>
+  <section if="HXCPP_ARM64">
+    <set name="HXCPP_MINGW_EXE" value="aarch64-w64-mingw32-g++" unless="HXCPP_MINGW_EXE" />
+    <set name="MINGW_ROOT" value="/usr/aarch64-w64-mingw32" unless="MINGW_ROOT" />
   </section>
   <section unless="HXCPP_M64">
     <set name="HXCPP_MINGW_EXE" value="i686-w64-mingw32-g++" unless="HXCPP_MINGW_EXE" />
@@ -43,8 +47,8 @@
   <cppflag value="-std=c++11" if="HXCPP_CPP11" />
   <cppflag value="-std=c++17" if="HXCPP_CPP17" />
   <cppflag value="-std=c++20" if="HXCPP_CPP20" />
-  <flag value="-m32" unless="HXCPP_M64"/>
-  <flag value="-m64" if="HXCPP_M64"/>
+  <flag value="-m32" unless="HXCPP_M64 || HXCPP_ARM64"/>
+  <flag value="-m64" if="HXCPP_M64" unless="HXCPP_ARM64"/>
   <flag value="-DHXCPP_M64" if="HXCPP_M64"/>
   <flag value="-I${HXCPP}/include"/>
   <objdir value="obj/mingw${OBJEXT}/"/>
@@ -57,8 +61,8 @@
   <flag value="-shared"/>
   <flag value="-debug" if="debug"/>
   <flag value="--enable-auto-import"/>
-  <flag value="-m32" unless="HXCPP_M64"/>
-  <flag value="-m64" if="HXCPP_M64"/>
+  <flag value="-m32" unless="HXCPP_M64 || HXCPP_ARM64"/>
+  <flag value="-m64" if="HXCPP_M64" unless="HXCPP_ARM64"/>
   <flag value="-static"/>
   <flag value="-static-libgcc"/>
   <flag value="-static-libstdc++"/>
@@ -73,8 +77,8 @@
   <flag value="-debug" if="debug"/>
   <flag value="-Wl,--enable-auto-import"/>
   <flag value="-mwindows" if="SUBSYSTEMWINDOWS" />
-  <flag value="-m32" unless="HXCPP_M64"/>
-  <flag value="-m64" if="HXCPP_M64"/>
+  <flag value="-m32" unless="HXCPP_M64 || HXCPP_ARM64"/>
+  <flag value="-m64" if="HXCPP_M64" unless="HXCPP_ARM64"/>
   <flag value="-static"/>
   <flag value="-static-libgcc" />
   <flag value="-static-libstdc++" />
