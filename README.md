@@ -5,7 +5,7 @@ This hxcpp fork was previously used for the Android and iOS ports I provided. Al
 
 # Building the Tools
 
-For Lime:
+With Lime:
 ```
 haxelib run lime rebuild hxcpp
 ```
