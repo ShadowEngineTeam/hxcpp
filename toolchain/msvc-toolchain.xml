@@ -43,10 +43,6 @@
 <set name="MACHINE" value="x64" if="HXCPP_M64" />
 <set name="MACHINE" value="ARM64" if="HXCPP_ARM64" />
 
-<set name="TARGET_TRIPLE" value="i686-windows-msvc" />
-<set name="TARGET_TRIPLE" value="x86_64-windows-msvc" if="HXCPP_M64" />
-<set name="TARGET_TRIPLE" value="arm64-windows-msvc" if="HXCPP_ARM64" />
-
 <!-- Seem vc does not know how to start its own pdbserver in 64 bit mode -->
 <setup name="pdbserver" if="HXCPP_DEBUG_LINK HXCPP_HACK_PDBSRV HXCPP_FORCE_PDB_SERVER" />
 
@@ -55,12 +51,10 @@
 <set name="HXCPP_LTCG_INCREMENTAL" value="1" if="HXCPP_OPTIMIZE_LINK_INCREMENTAL"/>
 <unset name="HXCPP_FAST_LINK" if="HXCPP_FAST_LINK" unless="MSVC19"/>
 
+<path name="${HXCPP_MSVC_CUSTOM}/bin/${MACHINE}" />
+
 <compiler id="MSVC" exe="cl.exe" if="windows">
-  <exe name="clang-cl" if="linux_host||mac_host"/>
   <flag value="-nologo"/>
-
-  <flag value = "--target=${TARGET_TRIPLE}" if="linux_host||mac_host" />
-
 
   <!-- Newer options -->
   <!-- <flag value = "/analyze-" if="MSVC17+" /> -->
@@ -121,7 +115,6 @@
   <objdir value="${MSVC_OBJ_DIR}" />
 
   <rcexe name="rc.exe" unless="linux_host||mac_host" />
-  <rcexe name="llvm-rc" if="linux_host||mac_host" />
   <rcext value=".res" />
   <rcflag value="-nologo" />
 
@@ -129,7 +122,6 @@
 </compiler>
 
 <linker id="dll" exe="link.exe" if="windows">
-  <exe name="lld-link" if="linux_host||mac_host"/>
   <flag value="-nologo"/>
   <flag value="-machine:${MACHINE}"/>
   <flag value="-dll"/>
@@ -153,7 +145,6 @@
 </linker>
 
 <linker id="exe" exe="link.exe" unless="winrt">
-  <exe name="lld-link" if="linux_host||mac_host"/>
   <fromfile value="@"/>
   <flag value="-nologo"/>
   <flag value="-machine:${MACHINE}"/>
@@ -178,7 +169,6 @@
 
 
 <manifest exe="mt.exe" >
-  <exe name="llvm-mt" if="linux_host||mac_host"/>
   <flag value="-nologo"/>
   <flag value="-manifest"/>
   <outPre value="-outputresource:" />
@@ -188,7 +178,6 @@
 
 
 <linker id="exe" exe="link.exe" if="winrt">
-  <exe name="lld-link" if="linux_host||mac_host"/>
   <fromfile value="@"/>
   <flag value="-nologo"/>
   <flag value="-machine:${MACHINE}"/>
@@ -211,7 +200,6 @@
 </linker>
 
 <linker id="static_link" exe="lib.exe" if="windows">
-  <exe name="llvm-lib" if="linux_host||mac_host"/>
   <flag value="-LTCG" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTCG_INCREMENTAL"/>
   <flag value="-LTCG:INCREMENTAL" if="HXCPP_LTCG_INCREMENTAL" unless="debug"/>
   <fromfile value="@"/>
