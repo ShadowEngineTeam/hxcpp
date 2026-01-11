@@ -2068,8 +2068,9 @@ class BuildTool
          // Cross-compile?
          if(defines.exists("windows"))
          {
-            defines.set("toolchain","mingw");
-            defines.set("mingw", "mingw");
+            /*defines.set("toolchain","mingw");
+            defines.set("mingw", "mingw");*/
+            defines.set("toolchain","msvc");
             defines.set("xcompile","1");
             defines.set("BINDIR", arm64 ? "WindowsArm64" : armv7 ? "WindowsArm" : m64 ? "Windows64":"Windows");
          }
@@ -2106,6 +2107,14 @@ class BuildTool
             defines.set("toolchain","linux");
             defines.set("xcompile","1");
             defines.set("BINDIR", m64 ? "Linux64":"Linux");
+         }
+         else if(defines.exists("windows"))
+         {
+            /*defines.set("toolchain","mingw");
+            defines.set("mingw", "mingw");*/
+            defines.set("toolchain","msvc");
+            defines.set("xcompile","1");
+            defines.set("BINDIR", arm64 ? "WindowsArm64" : armv7 ? "WindowsArm" : m64 ? "Windows64":"Windows");
          }
          else
          {

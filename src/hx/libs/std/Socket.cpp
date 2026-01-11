@@ -15,8 +15,8 @@
 #else
    // Windows...
    #include <winsock2.h>
-   #include <In6addr.h>
-   #include <Ws2tcpip.h>
+   #include <in6addr.h>
+   #include <ws2tcpip.h>
 #endif
 
 
