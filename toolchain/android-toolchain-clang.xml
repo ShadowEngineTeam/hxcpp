@@ -106,6 +106,7 @@
      <flag value ="-v" />
   -->
   <prefix value="lib"/>
+  <lib name="-landroid"/>
   <lib name="-llog"/>
   <ext value=".so"/>
     
