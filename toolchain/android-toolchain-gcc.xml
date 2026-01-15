@@ -207,6 +207,7 @@
     <lib name="${ANDROID_NDK_ROOT}/platforms/${PLATFORM}/${PLATFORM_ARCH}/usr/lib/crtbegin_so.o"/>
   </section>
   <lib name="-llog"/>
+  <lib name="-landroid"/>
   <lib name="-ldl"/>
 </linker>
 
@@ -253,6 +254,7 @@
   </section>
   <lib name="${ANDROID_NDK_ROOT}/platforms/${PLATFORM}/${PLATFORM_ARCH}/usr/lib/crtend_android.o"/>
   <lib name="-llog"/>
+  <lib name="-landroid"/>
   <lib name="-ldl"/>
 </linker>
 
