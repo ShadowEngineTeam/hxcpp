@@ -4,7 +4,7 @@ This hxcpp fork was previously used for the Android and iOS ports I provided. Al
 
 # License
 
-This hxcpp fork is licensed under the MIT License. See [LICENSE.txt](LICENSE.txt) for details.
+This hxcpp fork is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
 # Building the Tools
 
