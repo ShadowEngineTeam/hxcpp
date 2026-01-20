@@ -16,6 +16,8 @@ namespace hx { template<typename O> class ObjectPtr; }
 
 namespace hx { null NullArithmetic(const char *inText); }
 
+namespace hx { template<class TReturn, class... TArgs> class Callable; }
+
 #define HX_NULL_COMPARE_OP(op,type,value) \
 			bool operator op (const type &inRHS) const { return value; }
 
@@ -114,6 +116,8 @@ class null
      template<typename T> inline bool operator != (const hx::ObjectPtr<T> &) const;
      template<typename T> inline bool operator == (const Array<T> &) const;
      template<typename T> inline bool operator != (const Array<T> &) const;
+     template<class TReturn, class... TArgs> inline bool operator == (const ::hx::Callable<TReturn(TArgs...)>&) const;
+     template<class TReturn, class... TArgs> inline bool operator != (const ::hx::Callable<TReturn(TArgs...)>&) const;
      inline bool operator == (const hx::FieldRef &) const;
      inline bool operator != (const hx::FieldRef &) const;
      inline bool operator == (const hx::IndexRef &) const;
@@ -146,8 +150,8 @@ class null
 	  HX_NULL_COMPARE_OPS(unsigned short)
 	  HX_NULL_COMPARE_OPS(signed char)
 	  HX_NULL_COMPARE_OPS(unsigned char)
-     HX_NULL_COMPARE_OPS(char16_t)
-     HX_NULL_COMPARE_OPS(char32_t)
+	  HX_NULL_COMPARE_OPS(char16_t)
+	  HX_NULL_COMPARE_OPS(char32_t)
 	  HX_NULL_COMPARE_OPS(cpp::Int64)
 	  HX_NULL_COMPARE_OPS(cpp::UInt64)
 	  HX_NULL_COMPARE_MOST_OPS(String)
@@ -197,6 +201,7 @@ struct Null
    }
 
    inline operator Dynamic();
+   inline operator T() { return isNull ? null() : value; }
    inline T Default(T inDefault) { return isNull ? inDefault : value; }
 
    bool isNull;

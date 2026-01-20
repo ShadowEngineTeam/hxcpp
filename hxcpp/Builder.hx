@@ -115,8 +115,6 @@ class Builder
                target = target.substr(7);
             }
             var staticFlags = isStatic ? ["-Dstatic_link"] : [];
-            if (target=="ios" || target=="tvos")
-               staticFlags = ["-DHXCPP_CPP11"];
 
             switch(target)
             {
