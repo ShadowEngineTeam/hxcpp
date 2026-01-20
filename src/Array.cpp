@@ -108,7 +108,6 @@ void ArrayBase::Realloc(int inSize) const
          else
          {
             mBase = (char *)hx::InternalRealloc(length*elemSize,mBase, bytes, true);
-            int o = bytes;
             bytes = hx::ObjectSizeSafe(mBase);
          }
       }
