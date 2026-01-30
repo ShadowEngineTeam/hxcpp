@@ -106,6 +106,7 @@
   <flag value="-Wno-unused-value" />
   <flag value="-Wno-format-extra-args" />
   <flag value="-Wno-bool-conversion" />
+  <flag value="-Wno-inconsistent-missing-override" />
   <flag value="-Wno-warn-absolute-paths" />
   <include name="toolchain/common-defines.xml" />
   <flag value="-I${HXCPP}/include"/>
