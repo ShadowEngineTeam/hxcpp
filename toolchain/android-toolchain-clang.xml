@@ -115,5 +115,23 @@
   <ext value=".so"/>
     
 </linker>
+
+<linker id="exe" exe="clang++" >
+
+  <exe name="clang++" />
+
+  <ext value="" />
+  <outflag value="-o" />
+  <prefix value="" />
+
+  <flag value="--target=${ABITRIPLE}${HXCPP_ANDROID_PLATFORM}" />
+
+  <flag value="-Wl,--no-undefined" unless="HXCPP_ALLOW_UNDEFINED" />
+
+  <flag value="-static-libstdc++" />
+
+  <lib name="-llog" />
+
+</linker>
     
 </xml>
