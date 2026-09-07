@@ -38,12 +38,10 @@
   <flag value="-Wno-overflow" />
   <cppflag value="-Wno-invalid-offsetof" />
   <flag value="-DHX_LINUX"/>
-  <flag value="-DHXCPP_MULTI_THREADED" if="HXCPP_MULTI_THREADED"/>
   <flag value="-DHXCPP_BIG_ENDIAN" if="HXCPP_BIG_ENDIAN"/>
   <include name="toolchain/common-defines.xml" />
   <flag value="-m32" unless="noM32"/>
   <flag value="-m64" if="HXCPP_M64" unless="noM64" />
-  <flag value="-DHXCPP_M64" if="HXCPP_M64" unless="noM64" />
   <flag value="-march=x86-64-v3" if="HXCPP_M64" unless="HXCPP_ARM64 || HXCPP_ARMV7 || HXCPP_NO_ARCH_LEVEL" />
   <flag value="-march=haswell" unless="HXCPP_M64 || HXCPP_ARM64 || HXCPP_ARMV7 || HXCPP_NO_ARCH_LEVEL" />
   <flag value="-march=armv7-a" if="HXCPP_ARMV7" unless="HXCPP_NO_ARCH_LEVEL" />
