@@ -59,6 +59,7 @@
   <flag value="-DHX_ANDROID"/>
   <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
   <flag value="-DHXCPP_ANDROID_PLATFORM=${HXCPP_ANDROID_PLATFORM}" />
+  <flag value="-DHXCPP_ANDROID_COMPAT_BSD_SIGNAL" unless="NDKV13+"/>
 
   <!-- Options -->
   <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
