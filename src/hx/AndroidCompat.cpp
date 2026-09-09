@@ -1,4 +1,4 @@
-#if (HXCPP_ANDROID_PLATFORM>=21) && !defined(HXCPP_M64)
+#if defined(HXCPP_ANDROID_PLATFORM>=21) && !defined(HXCPP_M64)
 
 #include <hxcpp.h>
 #include <limits>
