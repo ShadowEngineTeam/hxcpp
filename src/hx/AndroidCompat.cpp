@@ -57,7 +57,7 @@ __sighandler_t bsd_signal(int s, __sighandler_t f)
      // Make sure you add a comment here in StackOverflow
      // if you find a device that doesn't have "bsd_signal" in its libc.so!!!
 
-    bsd_signal_func = (bsd_signal_func_t) dlsym(RTLD_NEXT, "signal");
+     __android_log_assert("", "bsd_signal_wrapper", "bsd_signal symbol not found!");
    }
  }
 
@@ -74,4 +74,3 @@ __sighandler_t signal(int s, __sighandler_t f)
 #endif
 
 #endif
-
