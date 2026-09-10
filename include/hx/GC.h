@@ -165,7 +165,7 @@ extern size_t sgMinimumWorkingMemory;
 extern size_t sgMinimumFreeSpace;
 
 // Also ensure that the free memory is larger than this amount of used memory
-extern int sgTargetFreeSpacePercentage;
+extern size_t sgTargetFreeSpacePercentage;
 
 
 extern HXCPP_EXTERN_CLASS_ATTRIBUTES int gByteMarkID;
