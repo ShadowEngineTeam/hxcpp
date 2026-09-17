@@ -28,7 +28,8 @@
 <compiler id="linux" exe="g++" if="linux">
   <exe name="${CXX}" if="CXX" />
   <flag value="-c"/>
-  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
+  <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
   <flag value="-fvisibility=hidden"/>
   <cppflag value="-frtti"/>
   <flag value="-g" if="HXCPP_DEBUG_LINK"/>
@@ -54,6 +55,8 @@
 </compiler>
 
 <linker id="dll" exe="g++" if="linux">
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
+  <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
   <exe name="${CXX}" if="CXX" />
   <fromfile value="" if="GCC_OLD" />
   <flag value="-shared"/>
@@ -70,6 +73,8 @@
 </linker>
 
 <linker id="exe" exe="g++" if="linux">
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
+  <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
   <exe name="${CXX}" if="CXX" />
   <fromfile value="" if="GCC_OLD" />
   <flag value="-debug" if="HXCPP_DEBUG_LINK" />

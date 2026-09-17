@@ -61,7 +61,8 @@
   <flag value="-DHXCPP_ANDROID_PLATFORM=${HXCPP_ANDROID_PLATFORM}" />
 
   <!-- Options -->
-  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug"/>
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
+  <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
   <flag value="-fvisibility=hidden"/>
   <flag value="-ffunction-sections"/>
   <flag value="-fstack-protector"/>
@@ -84,6 +85,8 @@
 
 
 <linker id="dll" exe="clang++" >
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
+  <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
 
   <exe name="clang++" />
   <flag value ="-shared" />
@@ -117,6 +120,8 @@
 </linker>
 
 <linker id="exe" exe="clang++" >
+  <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
+  <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
 
   <exe name="clang++" />
 
