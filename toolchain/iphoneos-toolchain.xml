@@ -78,6 +78,7 @@
 </compiler>
 
 <linker id="dll" exe="g++" >
+  <flag value="-fuse-ld=${HXCPP_USE_LD}" if="HXCPP_USE_LD"/>
   <exe name="xcrun --sdk iphoneos${IPHONE_VER} g++" if="HXCPP_GCC" />
   <exe name="xcrun --sdk iphoneos${IPHONE_VER} clang++" />
   <flag value="-Wl,-cache_path_lto,/tmp" if="HXCPP_OPTIMIZE_LINK_INCREMENTAL" unless="debug"/>

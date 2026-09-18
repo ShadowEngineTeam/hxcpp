@@ -85,6 +85,7 @@
 
 
 <linker id="dll" exe="clang++" >
+  <flag value="-fuse-ld=${HXCPP_USE_LD}" if="HXCPP_USE_LD"/>
   <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
   <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
 
@@ -120,6 +121,7 @@
 </linker>
 
 <linker id="exe" exe="clang++" >
+  <flag value="-fuse-ld=${HXCPP_USE_LD}" if="HXCPP_USE_LD"/>
   <flag value="-flto" if="HXCPP_OPTIMIZE_LINK" unless="debug || HXCPP_LTO_THIN"/>
   <flag value="-flto=thin" if="HXCPP_LTO_THIN" unless="debug"/>
 

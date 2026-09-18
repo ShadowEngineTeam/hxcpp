@@ -58,6 +58,7 @@
 </compiler>
 
 <linker id="dll" exe="g++" if="macos">
+  <flag value="-fuse-ld=${HXCPP_USE_LD}" if="HXCPP_USE_LD"/>
   <exe name="xcrun --sdk macosx${MACOSX_VER} clang++" if="HXCPP_CLANG" />
   <fromfile value="" if="GCC_OLD" />
   <flag value="-Wl,-bundle,-bundle_loader,${dll_import_link}" if="dll_import_link" />
@@ -82,6 +83,7 @@
 </linker>
 
 <linker id="exe" exe="g++" if="macos">
+  <flag value="-fuse-ld=${HXCPP_USE_LD}" if="HXCPP_USE_LD"/>
   <exe name="xcrun --sdk macosx${MACOSX_VER} clang++" if="HXCPP_CLANG" />
   <!-- <flag value="-Wl,-stack_size,0x8000"/> -->
   <flag value="-rpath" />
