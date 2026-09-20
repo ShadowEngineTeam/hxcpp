@@ -785,6 +785,8 @@ String String::create(const char *inString,int inLength)
    return String(s,len);
 }
 
+#if (HXCPP_API_LEVEL>=500)
+
 String String::create(const::cpp::marshal::View<char>& buffer)
 {
     auto start = buffer.ptr.ptr;
@@ -820,6 +822,8 @@ String String::create(const cpp::marshal::View<char16_t>& buffer)
 
     return String::create(buffer.ptr.ptr, buffer.length - (end - start) - extra);
 }
+
+#endif
 
 String::String(const Dynamic &inRHS)
 {
@@ -1849,6 +1853,8 @@ const char16_t * String::wc_str(hx::IStringAlloc *inBuffer, int *outCharLength) 
    return str;
 }
 
+#if (HXCPP_API_LEVEL>=500)
+
 bool String::wc_str(::cpp::marshal::View<char16_t> buffer, int* outCharLength) const
 {
 #ifdef HX_SMART_STRINGS
@@ -1970,6 +1976,8 @@ bool String::utf8_str(::cpp::marshal::View<char> buffer, int* outByteLength) con
 
     return true;
 }
+
+#endif
 
 const wchar_t * String::wchar_str(hx::IStringAlloc *inBuffer) const
 {
